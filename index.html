@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leif Claesson</title>
+<meta name="description" content="Leif Claesson -- audio DSP since 1996. Free Windows tools, and the occasional thing dug back out of a 30-year-old disk.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --bg:#141210; --bg2:#1a1712; --panel:#1e1a15; --panel2:#241f19;
+    --ink:#efe6d6; --ink-dim:#a99a83; --line:#2c261e; --edge:#3a3227;
+    --brass:#e0a13c; --brass-dim:#b9853165;
+    --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:"Cascadia Code",ui-monospace,"Consolas",monospace;
+    --thai:"Leelawadee UI","Noto Sans Thai",Thonburi,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{overflow-x:hidden}
+  body{
+    margin:0; background:
+      radial-gradient(1100px 520px at 82% -8%, #24201a 0%, transparent 60%),
+      radial-gradient(900px 480px at -6% 4%, #201c16 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(18px,4vw,40px)}
+  a{color:inherit}
+  /* Thai anywhere on the page gets a real Thai font, never the mono */
+  [lang="th"]{font-family:var(--thai)}
+
+  /* top rule */
+  .topline{border-bottom:1px solid var(--line); background:rgba(20,18,16,.6)}
+  .topline .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px clamp(18px,4vw,40px)}
+  .brandmark{font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--ink)}
+  .brandmark b{color:var(--brass); font-weight:600}
+  .topnote{font-family:var(--mono); font-size:11.5px; color:var(--ink-dim); letter-spacing:.03em}
+
+  /* hero */
+  header.hero{padding:clamp(44px,8vw,92px) 0 clamp(26px,4vw,44px)}
+  .kicker{font-family:var(--mono); font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--brass); margin:0 0 18px}
+  h1{font-size:clamp(30px,5.6vw,58px); line-height:1.04; letter-spacing:-.02em; margin:0; font-weight:700; max-width:20ch}
+  h1 .amp{color:var(--brass)}
+  .bio{max-width:62ch; margin:26px 0 0}
+  .bio p{color:var(--ink-dim); font-size:clamp(14.5px,1.6vw,16.5px); margin:0 0 14px}
+  .bio p:last-child{margin-bottom:0}
+  .bio b{color:var(--ink); font-weight:600}
+  .handles{font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin:22px 0 0;
+    display:flex; flex-wrap:wrap; gap:8px 20px; align-items:baseline}
+  .handles a{color:var(--brass); text-decoration:none; border-bottom:1px solid var(--brass-dim)}
+  .handles a:hover{border-bottom-color:var(--brass)}
+
+  /* section headings */
+  .sec{margin:clamp(30px,5vw,54px) 0 0; border-top:1px solid var(--line); padding-top:clamp(24px,3.5vw,38px)}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 18px}
+  .sec-head h2{font-size:clamp(19px,2.4vw,25px); margin:0; letter-spacing:-.01em}
+  .sec-head .note{font-family:var(--mono); font-size:12px; color:var(--ink-dim); letter-spacing:.03em}
+
+  /* entry grid -- one <a class="tool"> per published thing */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px}
+  .tool{
+    position:relative; display:flex; flex-direction:column; gap:14px; text-decoration:none;
+    background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--line); border-radius:16px; padding:22px 22px 20px; overflow:hidden;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .tool::before{content:""; position:absolute; left:0; top:0; height:100%; width:4px; background:var(--ac); opacity:.85}
+  .tool::after{content:""; position:absolute; inset:0; background:radial-gradient(420px 160px at 100% 0%, color-mix(in srgb,var(--ac) 16%, transparent) 0%, transparent 60%); opacity:0; transition:opacity .18s ease; pointer-events:none}
+  .tool:hover{border-color:var(--edge); transform:translateY(-2px)}
+  .tool:hover::after{opacity:1}
+  .tool-top{display:flex; align-items:center; gap:16px}
+  .tool-ico{width:58px; height:58px; border-radius:13px; flex:0 0 auto; background:#0d0b09;
+    border:1px solid var(--line); object-fit:contain; box-shadow:0 8px 22px -12px #000}
+  /* glyph tile for an entry with no app icon */
+  .tool-glyph{width:58px; height:58px; border-radius:13px; flex:0 0 auto; background:#0d0b09;
+    border:1px solid var(--line); box-shadow:0 8px 22px -12px #000;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ac)}
+  .tool-id{min-width:0}
+  .tool-name{font-family:var(--mono); font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .tool-tag{color:var(--ac); font-size:13.5px; margin-top:3px; font-style:italic}
+  .tool-one{margin:0; color:var(--ink-dim); font-size:14px}
+  .tool-go{font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink); margin-top:auto}
+  .tool-go .arr{color:var(--ac); transition:transform .18s ease; display:inline-block}
+  .tool:hover .tool-go .arr{transform:translateX(4px)}
+
+  /* ethos */
+  .ethos-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(22px,5vw,52px); align-items:start}
+  .ethos-grid h3{font-size:clamp(17px,2.1vw,21px); margin:0 0 14px; letter-spacing:-.01em; font-weight:700}
+  .ethos-grid p{color:var(--ink-dim); margin:0 0 14px; font-size:15px}
+  .ethos-grid p b{color:var(--ink)}
+  .pledge{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+  .pledge li{font-family:var(--mono); font-size:13.5px; color:var(--ink); display:flex; gap:11px; align-items:flex-start}
+  .pledge .mk{color:var(--brass); flex:0 0 auto}
+  .pledge small{display:block; color:var(--ink-dim); font-family:var(--sans); font-size:13px; margin-top:2px}
+
+  footer{padding:clamp(26px,4vw,48px) 0 44px; margin-top:clamp(28px,4vw,46px); border-top:1px solid var(--line)}
+  footer .wrap{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12px; color:var(--ink-dim); letter-spacing:.02em}
+
+  @media (max-width:720px){
+    .ethos-grid{grid-template-columns:1fr}
+    .topnote{display:none}
+  }
+  /* short-and-wide (a strip window): claw back the vertical the hero eats.
+     The headline shrinks first, then the topline sheds -- the bio stays. */
+  @media (max-height:560px){
+    header.hero{padding:26px 0 20px}
+    h1{font-size:clamp(24px,3.2vw,36px); max-width:34ch}
+    .kicker{margin-bottom:10px}
+    .bio{margin-top:16px}
+    .handles{margin-top:14px}
+    .sec{margin-top:26px; padding-top:22px}
+  }
+  @media (max-height:430px){
+    .topline{display:none}
+    h1{font-size:clamp(21px,2.6vw,28px)}
+    header.hero{padding:20px 0 14px}
+    footer{padding-bottom:24px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topline"><div class="wrap">
+    <span class="brandmark"><b>//</b> leif claesson</span>
+    <span class="topnote">audio dsp &middot; small sharp tools</span>
+  </div></div>
+
+  <header class="hero"><div class="wrap">
+    <p class="kicker">Leif Claesson</p>
+    <h1>I write audio DSP. Everything on this page is a <span class="amp">side effect</span>.</h1>
+
+    <div class="bio">
+      <p>Swedish, in Thailand since 2007. I have been writing broadcast audio
+        processing since <b>1996</b>, starting in fixed point on a 486SX with no
+        FPU, which is still visible in how I write code.</p>
+      <p>It began as <b>LC audio</b> in Gothenburg: D2LIK, a 4-bit ADPCM stereo
+        codec built to carry audio over IPX at demoscene LAN parties, then
+        <b>Ultimod</b>, a DOS broadcast processor written in PowerBASIC with
+        inline assembler. Bob Orban taught me DSP over email in 1998 and I
+        worked at Orban in 1999. The audio work since then is <b>Breakaway</b>.</p>
+      <p>None of that is on this page. What is here are the small Windows tools
+        I built because I needed them and nobody else had, plus the occasional
+        thing dug back out of a 30-year-old disk. All of it free.</p>
+    </div>
+
+    <p class="handles">
+      <span>demoscene: <b>Liket of Goto10</b></span>
+      <span>online: <b>konbaasiang</b></span>
+      <a href="https://github.com/leifclaesson">github.com/leifclaesson</a>
+    </p>
+  </div></header>
+
+  <main class="wrap">
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2>The tools</h2>
+        <span class="note">free to use &middot; closed source &middot; no warranty</span>
+      </div>
+      <div class="grid">
+
+<!-- =====================================================================
+     TO ADD AN ENTRY: copy one <a class="tool"> block below, change the
+     href, --ac accent colour, icon, name, tagline and one-liner. The grid
+     reflows on its own -- no other file needs touching. An entry with no
+     app icon uses <div class="tool-glyph">X</div> in place of the <img>.
+     ===================================================================== -->
+
+        <a class="tool" href="https://leifclaesson.github.io/glance/" style="--ac:#38b0c6">
+          <div class="tool-top">
+            <img class="tool-ico" src="assets/glance.png" alt="Glance icon" decoding="async">
+            <div class="tool-id">
+              <div class="tool-name">Glance</div>
+              <div class="tool-tag">It only ever looks.</div>
+            </div>
+          </div>
+          <p class="tool-one">The Markdown viewer Windows never had. Live, read-only, no vault. It never writes to your files.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+        <a class="tool" href="https://leifclaesson.github.io/clipboroscope/" style="--ac:#2dffa0">
+          <div class="tool-top">
+            <img class="tool-ico" src="assets/clipboroscope.png" alt="CLIPBOROSCOPE.EXE icon" decoding="async">
+            <div class="tool-id">
+              <div class="tool-name">CLIPBOROSCOPE.EXE</div>
+              <div class="tool-tag">Do not tap on the glass.</div>
+            </div>
+          </div>
+          <p class="tool-one">Clipboard observation instrument. Every format Windows is really holding, rendered live.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+        <a class="tool" href="https://leifclaesson.github.io/enhance/" style="--ac:#46c8ff">
+          <div class="tool-top">
+            <img class="tool-ico" src="assets/enhance.png" alt="ENHANCE!! icon" decoding="async">
+            <div class="tool-id">
+              <div class="tool-name">ENHANCE!!</div>
+              <div class="tool-tag">Zoom, and enhance. Honestly.</div>
+            </div>
+          </div>
+          <p class="tool-one">GPU nearest-neighbour screen magnifier and pixel inspector. Real pixels, big and crisp, no invented detail.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+        <a class="tool" href="https://leifclaesson.github.io/pegged/" style="--ac:#3f7bff">
+          <div class="tool-top">
+            <img class="tool-ico" src="assets/pegged.png" alt="Pegged icon" decoding="async">
+            <div class="tool-id">
+              <div class="tool-name">Pegged</div>
+              <div class="tool-tag">Answers only to you.</div>
+            </div>
+          </div>
+          <p class="tool-one">A pinned, never-hijacked Explorer window for your shortcut pegboard. Exactly where you left it.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+        <a class="tool" href="https://leifclaesson.github.io/vitrine/" style="--ac:#7f9ac9">
+          <div class="tool-top">
+            <img class="tool-ico" src="assets/vitrine.png" alt="Vitrine icon" decoding="async">
+            <div class="tool-id">
+              <div class="tool-name">Vitrine</div>
+              <div class="tool-tag">One page, on display.</div>
+            </div>
+          </div>
+          <p class="tool-one">Tray-only kiosk webview. One page, full screen, no chrome. A portable folder app.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-head">
+        <h2>Other things</h2>
+        <span class="note">odds, ends and excavations</span>
+      </div>
+      <div class="grid">
+
+        <a class="tool" href="https://leifclaesson.github.io/proverb-masher/" style="--ac:#ffb000">
+          <div class="tool-top">
+            <div class="tool-glyph" aria-hidden="true">|</div>
+            <div class="tool-id">
+              <div class="tool-name">Proverb Masher</div>
+              <div class="tool-tag">New brooms run deep.</div>
+            </div>
+          </div>
+          <p class="tool-one">A 1996 DOS toy of mine, back from the dead. Real proverbs chopped in half and glued back wrong, in Swedish, English, Thai and Russian. The grammar stays right; the meaning does not.</p>
+          <span class="tool-go">Open <span class="arr">&rarr;</span></span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="ethos-grid">
+        <div>
+          <h3>Free to use. Closed source. Made because they needed to exist.</h3>
+          <p>The tools are not products. They are the sharp little things that made a
+            working day smoother, polished until they were worth handing out. So they
+            are yours to use, at no cost, with no strings.</p>
+          <p>The source stays private, and that is deliberate: it is so rare that
+            anyone actually helps a project, mostly they just fork it and make it
+            their own. So <b>use them freely</b>. Just do not expect the guts.</p>
+        </div>
+        <ul class="pledge">
+          <li><span class="mk">&#10003;</span><span><b>Free</b><small>No cost, no account, no nag.</small></span></li>
+          <li><span class="mk">&#10003;</span><span><b>Self-contained</b><small>Small and standalone. No cloud, no telemetry.</small></span></li>
+          <li><span class="mk">&#10003;</span><span><b>Windows-native</b><small>Real apps, real chrome. Built in Rust.</small></span></li>
+          <li><span class="mk">&#10003;</span><span><b>No warranty</b><small>Provided as-is. If it breaks, you keep both pieces.</small></span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer><div class="wrap">
+    <span>&copy; 2026 Leif Claesson</span>
+    <span>audio dsp since 1996 &middot; small sharp tools</span>
+  </div></footer>
+
+</body>
+</html>
