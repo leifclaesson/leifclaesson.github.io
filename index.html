@@ -90,18 +90,14 @@
   .tool::before{content:""; position:absolute; left:0; top:0; height:100%; width:3px;
     background:var(--ac); opacity:.8}
   .tool-top{display:flex; align-items:center; gap:14px}
-  /* the icon stands in a recess, cut with the theme's display tokens */
-  .tool-ico, .tool-glyph{
-    width:56px; height:56px; flex:0 0 auto; border-radius:3px;
-    background:var(--nf-display-bg);
-    box-shadow:
-      inset calc(2 * var(--nf-lit-x)) calc(2 * var(--nf-lit-y)) 5px rgba(0,0,0,.7),
-      0 0 0 1px var(--nf-display-rim),
-      var(--nf-lit-x) var(--nf-lit-y) 0 1px var(--nf-frame-rim-hi);
-  }
+  /* The icons are transparent and carry their own shape, so they stand straight on
+     the face -- no tile, no well. //Leif, 2026-10-01. */
+  .tool-ico, .tool-glyph{width:56px; height:56px; flex:0 0 auto}
   .tool-ico{object-fit:contain}
+  /* an entry with no app icon: the glyph fills the same box an icon would, or a
+     lone character reads as a stray mark beside the card's accent edge */
   .tool-glyph{display:flex; align-items:center; justify-content:center;
-    font:bold 26px var(--nf-font-mono); color:var(--ac); text-shadow:none}
+    font:bold 42px var(--nf-font-mono); color:var(--ac); text-shadow:none}
   .tool-id{min-width:0}
   .tool-name{font:bold 16px/1.2 var(--nf-font); letter-spacing:-.01em;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis}

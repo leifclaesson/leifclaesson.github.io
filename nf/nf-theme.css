@@ -1,10 +1,10 @@
 /* nf-theme.css -- GENERATED SUBSET of the NF theme. Do not edit.
  *
- * Baked from code_2/NfWebKit/theme/nf-theme.css (87bbe0cc0c) on 2026-10-01 by
+ * Baked from code_2/NfWebKit/theme/nf-theme.css (09d55cbbb2) on 2026-10-01 by
  * theme/tools/bake-web-subset.py, for the page it sits beside. The kit in the
  * monorepo is the source of truth: change it there and re-bake.
  *
- * Kept 54 of 213 rules and 99 of 201 custom properties; every trimpot seed is
+ * Kept 54 of 213 rules and 97 of 201 custom properties; every trimpot seed is
  * resolved to its default, since there is no hub out here to override one.
  *
  * Staged beside it: brushed-metal.js, nf-press.js, nf-radio.js, nf-scroll-bevel.js
@@ -48,8 +48,6 @@
   --nf-focus: hsl(215.8 48.5% 56.4% / 100%);
   --nf-sel-shadow-d: 1px;
   --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 85%);
-  --nf-display-bg: hsl(216.0 33.3% 2.9% / 100%);
-  --nf-display-rim: hsl(213.3 25.7% 6.9% / 100%);
   --nf-inner-bg: hsl(215.4 18.7% 13.1% / 70%);
   --nf-text: hsl(224 100% 97.1% / 100%);
   --nf-text-dim: hsl(218.2 15.7% 72.5% / 100%);
@@ -95,8 +93,6 @@
   --nf-focus: hsl(35.9 52.5% 83.5% / 100%);
   --nf-sel-shadow-d: 1px;
   --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 100%);
-  --nf-display-bg: hsl(216.0 29.4% 3.3% / 100%);
-  --nf-display-rim: hsl(40.0 3.3% 35.7% / 100%);
   --nf-inner-bg: hsl(35 100% 91% / 17.3%);
   --nf-text: hsl(214.3 11.5% 12% / 100%);
   --nf-text-dim: hsl(218.2 7.9% 0% / 60%);

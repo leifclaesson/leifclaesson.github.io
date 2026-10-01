@@ -1,4 +1,4 @@
-/* nf-radio.js -- staged from code_2/NfWebKit/theme/ (87bbe0cc0c) by bake-web-subset.py.
+/* nf-radio.js -- staged from code_2/NfWebKit/theme/ (09d55cbbb2) by bake-web-subset.py.
    Generated: comments stripped, code untouched. Edit the kit, not this. */
 import { PRESSED, AWAY } from "./nf-press.js";
 
