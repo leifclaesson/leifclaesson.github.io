@@ -47,8 +47,9 @@
   .skin{margin-left:auto; width:max-content; margin-bottom:0;
     grid-template-columns:repeat(2,minmax(84px,1fr))}
 
-  /* hero -- sits on bare metal, the way an NF window's own top does */
-  header.hero{padding:clamp(34px,6vw,68px) 0 clamp(20px,3vw,32px)}
+  /* hero -- a well like every other section, so the page is one stack of them.
+     Its own padding is just the air above the first well. */
+  header.hero{padding:clamp(16px,2.6vw,30px) 0 0}
   h1{font:bold clamp(27px,4.6vw,46px)/1.1 var(--nf-font); letter-spacing:-.015em;
      margin:0; max-width:22ch}
   h1 .amp{color:var(--nf-title)}
@@ -125,7 +126,7 @@
   /* short-and-wide (a strip window): claw back the vertical the hero eats.
      The headline shrinks first, then the topline sheds -- the bio stays. */
   @media (max-height:560px){
-    header.hero{padding:22px 0 16px}
+    header.hero{padding:10px 0 0}
     h1{font-size:clamp(23px,3.2vw,32px); max-width:34ch}
     .bio{margin-top:14px}
     .handles{margin-top:12px}
@@ -138,7 +139,7 @@
     .topline .brandmark, .topline .topnote{display:none}
     .topline .wrap{padding:5px clamp(18px,4vw,40px)}
     h1{font-size:clamp(20px,2.6vw,26px)}
-    header.hero{padding:16px 0 12px}
+    header.hero{padding:8px 0 0}
     footer{padding-bottom:22px}
   }
 </style>
@@ -154,7 +155,7 @@
     </div>
   </div></div>
 
-  <header class="hero"><div class="wrap">
+  <header class="hero"><div class="wrap"><div class="nf-frame sec">
     <h1>I write audio DSP. Everything on this page is a <span class="amp">side effect</span>.</h1>
 
     <div class="bio">
@@ -177,7 +178,7 @@
       <span>online: <b>konbaasiang</b></span>
       <a href="https://github.com/leifclaesson">github.com/leifclaesson</a>
     </p>
-  </div></header>
+  </div></div></header>
 
   <main class="wrap">
 
@@ -295,7 +296,6 @@
         <ul class="pledge">
           <li><span class="mk">&#10003;</span><span><b>Free</b><small>No cost, no account, no nag.</small></span></li>
           <li><span class="mk">&#10003;</span><span><b>Self-contained</b><small>Small and standalone. No cloud, no telemetry.</small></span></li>
-          <li><span class="mk">&#10003;</span><span><b>Windows-native</b><small>Real apps, real chrome. Built in Rust.</small></span></li>
           <li><span class="mk">&#10003;</span><span><b>No warranty</b><small>Provided as-is. If it breaks, you keep both pieces.</small></span></li>
         </ul>
       </div>
