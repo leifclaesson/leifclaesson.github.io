@@ -92,12 +92,7 @@
   .tool-top{display:flex; align-items:center; gap:14px}
   /* The icons are transparent and carry their own shape, so they stand straight on
      the face -- no tile, no well. //Leif, 2026-10-01. */
-  .tool-ico, .tool-glyph{width:56px; height:56px; flex:0 0 auto}
-  .tool-ico{object-fit:contain}
-  /* an entry with no app icon: the glyph fills the same box an icon would, or a
-     lone character reads as a stray mark beside the card's accent edge */
-  .tool-glyph{display:flex; align-items:center; justify-content:center;
-    font:bold 42px var(--nf-font-mono); color:var(--ac); text-shadow:none}
+  .tool-ico{width:56px; height:56px; flex:0 0 auto; object-fit:contain}
   .tool-id{min-width:0}
   .tool-name{font:bold 16px/1.2 var(--nf-font); letter-spacing:-.01em;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
@@ -119,7 +114,8 @@
 
   footer{padding:clamp(20px,3vw,32px) 0 40px; margin-top:clamp(8px,1.5vw,16px);
     border-top:1px solid var(--nf-etch-lo); box-shadow:inset 0 1px 0 var(--nf-etch-hi)}
-  footer .wrap{display:flex; justify-content:space-between; gap:6px 14px; flex-wrap:wrap;
+  /* one line, where the tagline used to sit */
+  footer .wrap{text-align:right;
     font:normal 12px var(--nf-font-mono); color:var(--nf-text-dim); letter-spacing:.02em}
 
   @media (max-width:720px){
@@ -195,8 +191,8 @@
 <!-- =====================================================================
      TO ADD AN ENTRY: copy one <a class="tool nf-btn"> block below, change the
      href, --ac accent colour, icon, name, tagline and one-liner. The grid
-     reflows on its own -- no other file needs touching. An entry with no
-     app icon uses <div class="tool-glyph">X</div> in place of the <img>.
+     reflows on its own -- no other file needs touching. An entry with no app
+     icon just leaves the <img> out; the name and the tagline carry it.
      nf-btn is what makes the card a raised NF face; tool is this page's own
      layout on top of it.
      ===================================================================== -->
@@ -273,7 +269,6 @@
 
         <a class="tool nf-btn" href="https://leifclaesson.github.io/proverb-masher/" style="--ac:#ffb000">
           <div class="tool-top">
-            <div class="tool-glyph" aria-hidden="true">|</div>
             <div class="tool-id">
               <div class="tool-name">Proverb Masher</div>
               <div class="tool-tag">New brooms run deep.</div>
@@ -309,8 +304,7 @@
   </main>
 
   <footer><div class="wrap">
-    <span>&copy; 2026 Leif Claesson</span>
-    <span>audio dsp since 1996 &middot; small sharp tools</span>
+    <span lang="sv">Här skulle ditt namn ha stått om du hade prenumererat.</span>
   </div></footer>
 
 <script type="module">
