@@ -1,0 +1,361 @@
+/* nf-theme.css -- GENERATED SUBSET of the NF theme. Do not edit.
+ *
+ * Baked from code_2/NfWebKit/theme/nf-theme.css (87bbe0cc0c) on 2026-10-01 by
+ * theme/tools/bake-web-subset.py, for the page it sits beside. The kit in the
+ * monorepo is the source of truth: change it there and re-bake.
+ *
+ * Kept 54 of 213 rules and 99 of 201 custom properties; every trimpot seed is
+ * resolved to its default, since there is no hub out here to override one.
+ *
+ * Staged beside it: brushed-metal.js, nf-press.js, nf-radio.js, nf-scroll-bevel.js
+ */
+:root, :root[data-nf-mode="dark"] {
+  color-scheme: dark;
+  --nf-panel-fallback: linear-gradient(160deg, #393d44, #5a616d 55%, #393d44);
+  --nf-frame-bg: hsl(219 15.7% 24% / 72%);
+  --nf-frame-rim-lo: hsl(216.0 23.8% 8.2% / 100%);
+  --nf-frame-rim-hi: hsl(218.2 8.9% 51.8% / 100%);
+  --nf-frame-shadow-d: 1.414px;
+  --nf-frame-shadow: inset var(--nf-frame-shadow-d) var(--nf-frame-shadow-d) 6px hsl(0 0% 0% / 55%);
+  --nf-btn-top: hsl(217 12.5% 34.5%);
+  --nf-btn-bottom: hsl(217 12.5% calc(34.5% - 14%));
+  --nf-btn-rim-hi: hsl(215.5 11.8% 63.5% / 100%);
+  --nf-btn-rim-lo: hsl(218.2 19.3% 11.2% / 100%);
+  --nf-btn-text: hsl(224.0 100.0% 97.1% / 100%);
+  --nf-btn-shadow: var(--nf-lit-x) var(--nf-lit-y) 2px rgba(0,0,0,.55);
+  --nf-btn-face-a: 100%;
+  --nf-sel-face-a: 100%;
+  --nf-btn-wash-top: color-mix(in srgb, var(--nf-btn-top) var(--nf-btn-face-a, 100%), transparent);
+  --nf-btn-wash-bottom: color-mix(in srgb, var(--nf-btn-bottom) var(--nf-btn-face-a, 100%), transparent);
+  --nf-sel-wash-top: color-mix(in srgb, var(--nf-sel-top) var(--nf-sel-face-a, 100%), transparent);
+  --nf-sel-wash-bottom: color-mix(in srgb, var(--nf-sel-bottom) var(--nf-sel-face-a, 100%), transparent);
+  --nf-btn-wash-push-top: color-mix(in srgb, color-mix(in srgb, var(--nf-btn-top) var(--nf-push-dim), #000) var(--nf-btn-face-a, 100%), transparent);
+  --nf-btn-wash-push-bottom: color-mix(in srgb, color-mix(in srgb, var(--nf-btn-bottom) var(--nf-push-dim), #000) var(--nf-btn-face-a, 100%), transparent);
+  --nf-sel-wash-push-top: color-mix(in srgb, color-mix(in srgb, var(--nf-sel-top) var(--nf-push-dim), #000) var(--nf-sel-face-a, 100%), transparent);
+  --nf-sel-wash-push-bottom: color-mix(in srgb, color-mix(in srgb, var(--nf-sel-bottom) var(--nf-push-dim), #000) var(--nf-sel-face-a, 100%), transparent);
+  --nf-btn-edge-hi: var(--nf-btn-rim-hi);
+  --nf-btn-edge-lo: var(--nf-btn-rim-lo);
+  --nf-lit-x: 0.707107px;
+  --nf-lit-y: 0.707107px;
+  --nf-lit-nx: 1;
+  --nf-lit-ny: 1;
+  --nf-lit-bx: calc(1px * var(--nf-lit-nx));
+  --nf-lit-by: calc(1px * var(--nf-lit-ny));
+  --nf-sel-top: hsl(215.8 48.5% 56.4%);
+  --nf-sel-bottom: hsl(215.8 48.5% calc(56.4% - 22.4%));
+  --nf-sel-rim-hi: hsl(215.8 48.5% calc(56.4% + 21.9%));
+  --nf-sel-text: hsl(0.0 0.0% 100.0% / 100%);
+  --nf-focus: hsl(215.8 48.5% 56.4% / 100%);
+  --nf-sel-shadow-d: 1px;
+  --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 85%);
+  --nf-display-bg: hsl(216.0 33.3% 2.9% / 100%);
+  --nf-display-rim: hsl(213.3 25.7% 6.9% / 100%);
+  --nf-inner-bg: hsl(215.4 18.7% 13.1% / 70%);
+  --nf-text: hsl(224 100% 97.1% / 100%);
+  --nf-text-dim: hsl(218.2 15.7% 72.5% / 100%);
+  --nf-title: hsl(60 72.7% 78.4% / 100%);
+  --nf-text-shadow-d: 1px;
+  --nf-text-shadow: var(--nf-text-shadow-d) var(--nf-text-shadow-d) 0 hsl(0 0% 0% / 85%);
+  --nf-etch-lo: hsl(216.0 23.8% 8.2% / 100%);
+  --nf-etch-hi: hsl(218.2 10.7% 40.4% / 100%);
+  --nf-scroll-track: hsl(220 14.3% 12.4% / 44%);
+  --nf-scroll-well-lo: hsl(0 0% 0% / 66%);
+  --nf-scroll-well-hi: hsl(0 0% 100% / 14.5%);
+  --nf-scroll-thumb: hsl(218 22.7% 74.1% / 17%);
+  --nf-scroll-thumb-hi: hsl(218.2 21.6% 90.0% / 35.0%);
+  --nf-scroll-thumb-lo: hsl(220.0 9.7% 6.1% / 72.0%);
+  --nf-scroll-under: hsl(217.5 9.5% 32.9% / 100%);
+}
+:root[data-nf-mode="light"] {
+  color-scheme: light;
+  --nf-panel-fallback: linear-gradient(160deg, #b4b1ac, #d8d5cf 55%, #b4b1ac);
+  --nf-frame-bg: hsl(42.9 3.4% 30.9% / 25%);
+  --nf-frame-rim-lo: hsl(30.0 3.2% 37.3% / 50.3%);
+  --nf-frame-rim-hi: hsl(40.0 18.7% 100% / 70%);
+  --nf-frame-shadow-d: 0.637px;
+  --nf-frame-shadow: inset var(--nf-frame-shadow-d) var(--nf-frame-shadow-d) 0px hsl(0 0% 0% / 29.8%);
+  --nf-btn-top: hsl(30.1 5.5% 100%);
+  --nf-btn-bottom: hsl(30.1 5.5% calc(100% - 25.7%));
+  --nf-btn-rim-hi: hsl(0.0 0.0% 100.0% / 100%);
+  --nf-btn-rim-lo: hsl(40.0 2.5% 47.5% / 100%);
+  --nf-btn-edge-hi: hsl(0 0% 82.7% / 0%);
+  --nf-btn-edge-lo: hsl(40 2.5% 47.5% / 0%);
+  --nf-btn-text: hsl(214.3 11.5% 12.0% / 100%);
+  --nf-btn-shadow: var(--nf-lit-x) var(--nf-lit-y) 2px rgba(0,0,0,.3);
+  --nf-btn-text-dy: -0.878px;
+  --nf-btn-face-a: 80%;
+  --nf-sel-face-a: 100%;
+  --nf-btn-ink: color-mix(in srgb, color-mix(in srgb, #ffffff calc(0 * 100%), #1b1e22) 100%, transparent);
+  --nf-btn-ink-shadow: var(--nf-text-shadow-d) var(--nf-text-shadow-d) 0 color-mix(in srgb, rgba(0,0,0,.55) calc(0 * 100%), rgba(255,255,255,.65));
+  --nf-sel-ink: color-mix(in srgb, color-mix(in srgb, #ffffff calc(1 * 100%), #1b1e22) 100%, transparent);
+  --nf-sel-top: hsl(131.1 96% 32.6%);
+  --nf-sel-bottom: hsl(131.1 96% calc(32.6% - -0.4%));
+  --nf-sel-rim-hi: hsl(131.1 96% calc(32.6% + 18.9%));
+  --nf-sel-text: hsl(0.0 0.0% 100.0% / 100%);
+  --nf-focus: hsl(35.9 52.5% 83.5% / 100%);
+  --nf-sel-shadow-d: 1px;
+  --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 100%);
+  --nf-display-bg: hsl(216.0 29.4% 3.3% / 100%);
+  --nf-display-rim: hsl(40.0 3.3% 35.7% / 100%);
+  --nf-inner-bg: hsl(35 100% 91% / 17.3%);
+  --nf-text: hsl(214.3 11.5% 12% / 100%);
+  --nf-text-dim: hsl(218.2 7.9% 0% / 60%);
+  --nf-title: hsl(246.8 45% 0% / 100%);
+  --nf-text-shadow-d: 0.5px;
+  --nf-text-shadow: var(--nf-text-shadow-d) var(--nf-text-shadow-d) 0 hsl(0 0% 100% / 30.4%);
+  --nf-etch-lo: hsl(40.0 2.4% 48.2% / 100%);
+  --nf-etch-hi: hsl(40.0 16.7% 92.9% / 100%);
+  --nf-scroll-track: hsl(0 0% 0% / 26%);
+  --nf-scroll-well-lo: hsl(0 0% 0% / 34%);
+  --nf-scroll-well-hi: hsl(0 0% 100% / 65%);
+  --nf-scroll-thumb: hsl(0 0% 100% / 26%);
+  --nf-scroll-thumb-hi: hsl(0.0 0.0% 100.0% / 65%);
+  --nf-scroll-thumb-lo: hsl(0.0 0.0% 0.0% / 40.0%);
+  --nf-scroll-under: hsl(37.5 6.6% 76.1% / 100%);
+}
+:root {
+  --nf-font: "Segoe UI", Tahoma, "DejaVu Sans", system-ui, Verdana, Geneva, sans-serif;
+  --nf-font-mono: Consolas, "DejaVu Sans Mono", ui-monospace, Menlo, monospace;
+  --nf-font-italic: "Segoe UI", "DejaVu Sans", system-ui, Verdana, sans-serif;
+  --nf-size: 13px;
+  --nf-radius: 4.24px;
+  --nf-radius-frame: calc(4.24px + 1px);
+  --nf-ctl-h: 27px;
+  --nf-btn-pad-x: 16px;
+  --nf-push-dim: 86.1%;
+  --nf-push-shift: .5px;
+  --nf-scrollbar-w: 21.24px;
+  --nf-scroll-margin-t: 3px;
+  --nf-scroll-margin-r: 2px;
+  --nf-scroll-margin-b: 2px;
+  --nf-scroll-margin-l: 4px;
+  --nf-scroll-well-border: var(--nf-scroll-margin-t) var(--nf-scroll-margin-r) var(--nf-scroll-margin-b) var(--nf-scroll-margin-l);
+  --nf-scroll-thumb-border: calc(var(--nf-scroll-margin-t) + 2px) calc(var(--nf-scroll-margin-r) + 2px) calc(var(--nf-scroll-margin-b) + 2px) calc(var(--nf-scroll-margin-l) + 2px);
+  --nf-scroll-well-radius: calc(var(--nf-scroll-margin-l) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-r) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-r) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-l) + var(--nf-scroll-radius)) / calc(var(--nf-scroll-margin-t) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-t) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-b) + var(--nf-scroll-radius)) calc(var(--nf-scroll-margin-b) + var(--nf-scroll-radius));
+  --nf-scroll-thumb-radius: calc(var(--nf-scroll-margin-l) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-r) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-r) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-l) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) / calc(var(--nf-scroll-margin-t) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-t) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-b) + 2px + max(0px, var(--nf-scroll-radius) - 2px)) calc(var(--nf-scroll-margin-b) + 2px + max(0px, var(--nf-scroll-radius) - 2px));
+  --nf-scroll-radius: 6px;
+  --nf-scroll-corner-desync: 14;
+  --nf-recess-gap: 14px;
+  font-synthesis: none;
+}
+em, i, cite, dfn, var, address {
+  font-family: var(--nf-font-italic);
+  font-synthesis: style;
+}
+:root {
+  --nf-tap-h: 0px;
+}
+:root[data-nf-input="touch"] {
+  --nf-ctl-h: 44px;
+  --nf-tap-h: var(--nf-ctl-h);
+  --nf-scrollbar-w: 45px;
+}
+@media (max-width: 700px) {
+  :root, :root[data-nf-input="touch"] {
+    --nf-scrollbar-w: 14px;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  background: var(--nf-panel-fallback);
+  background-attachment: fixed;
+}
+html[data-nf-metal] body {
+  background: transparent;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--nf-text);
+  font: normal var(--nf-size)/1.45 var(--nf-font);
+  text-shadow: var(--nf-text-shadow);
+  -webkit-font-smoothing: antialiased;
+}
+:root {
+  --nf-scroll-well-lo-2: color-mix(in srgb, var(--nf-scroll-well-lo) 36%, transparent);
+  --nf-scroll-well-hi-2: color-mix(in srgb, var(--nf-scroll-well-hi) 52%, transparent);
+  --nf-scroll-thumb-hi-2: color-mix(in srgb, var(--nf-scroll-thumb-hi) 75%, transparent);
+  --nf-scroll-thumb-lo-2: color-mix(in srgb, var(--nf-scroll-thumb-lo) 51%, transparent);
+  --nf-scroll-thumbp-hi: var(--nf-scroll-thumb-hi-2);
+  --nf-scroll-thumbp-hi-2: color-mix(in srgb, var(--nf-scroll-thumb-hi) 56%, transparent);
+  --nf-scroll-thumbp-lo: color-mix(in srgb, var(--nf-scroll-thumb-lo) 63%, transparent);
+  --nf-scroll-thumbp-lo-2: color-mix(in srgb, var(--nf-scroll-thumb-lo) 32%, transparent);
+}
+@media (min-width: 701px) {
+  ::-webkit-scrollbar {
+    width: calc(var(--nf-scrollbar-w) + var(--nf-scroll-margin-l) + var(--nf-scroll-margin-r));
+    height: calc(var(--nf-scrollbar-w) + var(--nf-scroll-margin-t) + var(--nf-scroll-margin-b));
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  ::-webkit-scrollbar-track {
+    --nf-scroll-c: var(--nf-scroll-well-corner-c, 0px);
+    border: solid transparent;
+    border-width: var(--nf-scroll-well-border);
+    border-radius: var(--nf-scroll-well-radius);
+    background-clip: padding-box;
+    background-color: var(--nf-scroll-track);
+    background-image: var(--nf-scroll-well-corner-tl, none), var(--nf-scroll-well-corner-tr, none), var(--nf-scroll-well-corner-bl, none), var(--nf-scroll-well-corner-br, none), linear-gradient( 90deg, var(--nf-scroll-well-lo-2) 0 var(--nf-lit-bx), var(--nf-scroll-well-lo) var(--nf-lit-bx) calc(2 * var(--nf-lit-bx)), transparent calc(2 * var(--nf-lit-bx))), linear-gradient(180deg, var(--nf-scroll-well-lo-2) 0 var(--nf-lit-by), var(--nf-scroll-well-lo) var(--nf-lit-by) calc(2 * var(--nf-lit-by)), transparent calc(2 * var(--nf-lit-by))), linear-gradient(270deg, var(--nf-scroll-well-hi-2) 0 var(--nf-lit-bx), var(--nf-scroll-well-hi) var(--nf-lit-bx) calc(2 * var(--nf-lit-bx)), transparent calc(2 * var(--nf-lit-bx))), linear-gradient( 0deg, var(--nf-scroll-well-hi-2) 0 var(--nf-lit-by), var(--nf-scroll-well-hi) var(--nf-lit-by) calc(2 * var(--nf-lit-by)), transparent calc(2 * var(--nf-lit-by)));
+    background-repeat: no-repeat;
+    background-position: left top, right top, left bottom, right bottom, left var(--nf-scroll-c), var(--nf-scroll-c) top, right var(--nf-scroll-c), var(--nf-scroll-c) bottom;
+    background-size: var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), 2px calc(100% - 2 * var(--nf-scroll-c)), calc(100% - 2 * var(--nf-scroll-c)) 2px, 2px calc(100% - 2 * var(--nf-scroll-c)), calc(100% - 2 * var(--nf-scroll-c)) 2px;
+  }
+  html::-webkit-scrollbar, body::-webkit-scrollbar, html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+    background-color: var(--nf-scroll-under);
+    background-image: var(--nf-scroll-metal, none);
+    background-size: var(--nf-scroll-metal-size, auto);
+    border: 0;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb {
+    --nf-scroll-c: var(--nf-scroll-thumb-corner-c, 0px);
+    --nf-thumb-hi: var(--nf-scroll-thumb-hi);
+    --nf-thumb-hi-2: var(--nf-scroll-thumb-hi-2);
+    --nf-thumb-lo: var(--nf-scroll-thumb-lo);
+    --nf-thumb-lo-2: var(--nf-scroll-thumb-lo-2);
+    --nf-thumb-tl: var(--nf-scroll-thumb-corner-tl, none);
+    --nf-thumb-tr: var(--nf-scroll-thumb-corner-tr, none);
+    --nf-thumb-bl: var(--nf-scroll-thumb-corner-bl, none);
+    --nf-thumb-br: var(--nf-scroll-thumb-corner-br, none);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: var(--nf-scroll-thumb-border);
+    border-radius: var(--nf-scroll-thumb-radius);
+    background-image: var(--nf-thumb-tl), var(--nf-thumb-tr), var(--nf-thumb-bl), var(--nf-thumb-br), linear-gradient( 90deg, var(--nf-thumb-hi) 0 var(--nf-lit-bx), var(--nf-thumb-hi-2) var(--nf-lit-bx) calc(2 * var(--nf-lit-bx)), transparent calc(2 * var(--nf-lit-bx))), linear-gradient(180deg, var(--nf-thumb-hi) 0 var(--nf-lit-by), var(--nf-thumb-hi-2) var(--nf-lit-by) calc(2 * var(--nf-lit-by)), transparent calc(2 * var(--nf-lit-by))), linear-gradient(270deg, var(--nf-thumb-lo) 0 var(--nf-lit-bx), var(--nf-thumb-lo-2) var(--nf-lit-bx) calc(2 * var(--nf-lit-bx)), transparent calc(2 * var(--nf-lit-bx))), linear-gradient( 0deg, var(--nf-thumb-lo) 0 var(--nf-lit-by), var(--nf-thumb-lo-2) var(--nf-lit-by) calc(2 * var(--nf-lit-by)), transparent calc(2 * var(--nf-lit-by))), linear-gradient(var(--nf-scroll-thumb), var(--nf-scroll-thumb)), var(--nf-scroll-metal, none);
+    background-repeat: no-repeat;
+    background-position: left top, right top, left bottom, right bottom, left var(--nf-scroll-c), var(--nf-scroll-c) top, right var(--nf-scroll-c), var(--nf-scroll-c) bottom, 0 0, calc(-1 * (var(--nf-scroll-margin-l) + 2px)) 0;
+    background-size: var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), var(--nf-scroll-c) var(--nf-scroll-c), 2px calc(100% - 2 * var(--nf-scroll-c)), calc(100% - 2 * var(--nf-scroll-c)) 2px, 2px calc(100% - 2 * var(--nf-scroll-c)), calc(100% - 2 * var(--nf-scroll-c)) 2px, auto, var(--nf-scroll-metal-size, auto);
+  }
+  ::-webkit-scrollbar-thumb:active {
+    --nf-thumb-hi: var(--nf-scroll-thumbp-hi);
+    --nf-thumb-hi-2: var(--nf-scroll-thumbp-hi-2);
+    --nf-thumb-lo: var(--nf-scroll-thumbp-lo);
+    --nf-thumb-lo-2: var(--nf-scroll-thumbp-lo-2);
+    --nf-thumb-tl: var(--nf-scroll-thumbp-corner-tl, none);
+    --nf-thumb-tr: var(--nf-scroll-thumbp-corner-tr, none);
+    --nf-thumb-bl: var(--nf-scroll-thumbp-corner-bl, none);
+    --nf-thumb-br: var(--nf-scroll-thumbp-corner-br, none);
+  }
+  ::-webkit-scrollbar-corner {
+    border: solid transparent;
+    border-width: var(--nf-scroll-well-border);
+    border-radius: var(--nf-scroll-well-radius);
+    background-clip: padding-box;
+    background-color: var(--nf-scroll-track);
+  }
+}
+@supports (-moz-orient: vertical) {
+  :root {
+    scrollbar-color: var(--nf-btn-top) var(--nf-inner-bg);
+  }
+}
+.nf-frame {
+  border-radius: var(--nf-radius-frame);
+  background: var(--nf-frame-bg);
+  padding: 10px 13px 13px;
+  box-shadow: var(--nf-frame-shadow), 0 0 0 1px var(--nf-frame-rim-lo), var(--nf-lit-x) var(--nf-lit-y) 0 1px var(--nf-frame-rim-hi);
+  margin-bottom: var(--nf-recess-gap);
+}
+.nf-frame > .nf-title:first-child {
+  margin-top: 0;
+}
+.nf-selector {
+  margin-bottom: var(--nf-recess-gap);
+}
+:is(.nf-grid, .nf-row, .nf-appmenu, .nf-menu-row) > :is(.nf-display, .nf-meter, .nf-list, .nf-row, .nf-selector, .nf-frame), :is(.nf-frame, .nf-appmenu) > :last-child {
+  margin-bottom: 0;
+}
+.nf-title {
+  color: var(--nf-title);
+  font: bold var(--nf-size)/1.2 var(--nf-font);
+  margin: 0 0 9px;
+  text-shadow: var(--nf-text-shadow);
+}
+@property --nf-lit-nx {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --nf-lit-ny {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+.nf-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--nf-ctl-h);
+  --nf-btn-pad-y: 4px;
+  padding: calc(var(--nf-btn-pad-y) + var(--nf-btn-text-dy, 0px)) var(--nf-btn-pad-x) calc(var(--nf-btn-pad-y) - var(--nf-btn-text-dy, 0px));
+  border: 0;
+  border-radius: var(--nf-radius);
+  color: var(--nf-btn-ink, var(--nf-btn-text));
+  font: normal var(--nf-size)/1.15 var(--nf-font);
+  text-shadow: var(--nf-btn-ink-shadow, var(--nf-text-shadow));
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--nf-btn-wash-top), var(--nf-btn-wash-bottom));
+  box-shadow: inset var(--nf-lit-x) var(--nf-lit-y) 0 var(--nf-btn-edge-hi), inset calc(-1 * var(--nf-lit-x)) calc(-1 * var(--nf-lit-y)) 0 var(--nf-btn-edge-lo), 0 0 0 1px var(--nf-btn-edge-lo), var(--nf-btn-shadow);
+}
+.nf-btn:hover:not([disabled]) {
+  filter: brightness(1.1);
+}
+[data-dragging] .nf-btn:hover:not([disabled]) {
+  filter: none;
+}
+[data-dragging] .nf-btn.is-hovered:not([disabled]) {
+  filter: brightness(1.1);
+}
+.nf-btn:focus-visible {
+  outline: 2px solid var(--nf-focus);
+  outline-offset: 2px;
+}
+.nf-btn:active:not([disabled]):not(.is-press-away):not([data-dragging] *), .nf-btn.is-pressed:not([disabled]) {
+  background: linear-gradient(180deg, var(--nf-btn-wash-push-top), var(--nf-btn-wash-push-bottom));
+  box-shadow: inset var(--nf-lit-x) var(--nf-lit-y) 0 var(--nf-btn-edge-lo), inset calc(2 * var(--nf-lit-x)) calc(2 * var(--nf-lit-y)) 3px rgba(0,0,0,.28), 0 0 0 1px var(--nf-btn-edge-lo);
+  transform: translate(var(--nf-push-shift), var(--nf-push-shift));
+}
+.nf-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: 4px;
+  padding: 5px;
+  border-radius: var(--nf-radius-frame);
+  background: var(--nf-frame-bg);
+  box-shadow: var(--nf-frame-shadow), 0 0 0 1px var(--nf-frame-rim-lo), var(--nf-lit-x) var(--nf-lit-y) 0 1px var(--nf-frame-rim-hi);
+}
+.nf-selector .nf-btn {
+  min-height: max(25px, var(--nf-tap-h));
+  padding: 3px 8px;
+  font-size: 12px;
+}
+.nf-btn[aria-checked="true"], .nf-btn.is-selected, .nf-selector .nf-btn.is-selected {
+  background: linear-gradient(180deg, var(--nf-sel-wash-top), var(--nf-sel-wash-bottom));
+  color: var(--nf-sel-ink, var(--nf-sel-text));
+  text-shadow: var(--nf-sel-shadow);
+  box-shadow: inset var(--nf-lit-x) var(--nf-lit-y) 0 var(--nf-sel-rim-hi), inset calc(-1 * var(--nf-lit-x)) calc(-1 * var(--nf-lit-y)) 0 var(--nf-btn-edge-lo), 0 0 0 1px var(--nf-btn-edge-lo), var(--nf-btn-shadow);
+}
+.nf-btn.is-selected:active:not([disabled]):not(.is-press-away):not([data-dragging] *), .nf-btn.is-selected.is-pressed:not([disabled]), .nf-btn[aria-checked="true"]:active:not([disabled]):not(.is-press-away):not([data-dragging] *), .nf-btn[aria-checked="true"].is-pressed:not([disabled]) {
+  background: linear-gradient(180deg, var(--nf-sel-wash-push-top), var(--nf-sel-wash-push-bottom));
+  color: var(--nf-sel-ink, var(--nf-sel-text));
+  text-shadow: var(--nf-sel-shadow);
+}
+.nf-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+@media (max-width: 460px) {
+  .nf-selector {
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  }
+}

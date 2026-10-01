@@ -1,124 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-nf-mode="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leif Claesson</title>
 <meta name="description" content="Leif Claesson -- audio DSP since 1996. Free Windows tools, and the occasional thing dug back out of a 30-year-old disk.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- The NF theme, baked out of code_2/NfWebKit by theme/tools/bake-web-subset.py.
+     Generated: never edit nf/ here, edit the kit and re-bake. -->
+<link rel="stylesheet" href="nf/nf-theme.css">
+<script>
+  /* Before first paint, or a remembered light page flashes dark on its way in.
+     A remembered choice wins; with none, the OS setting decides. */
+  try {
+    var m = localStorage.getItem("nf-mode");
+    if (m !== "dark" && m !== "light") {
+      m = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    }
+    document.documentElement.setAttribute("data-nf-mode", m);
+  } catch (e) { /* private mode -- the dark default in the markup stands */ }
+  /* A finger gets the theme's touch metrics: the Dark/Light positions grow to a
+     44px tap target and the scrollbar widens, both the kit's own numbers. */
+  if (matchMedia("(pointer: coarse)").matches) {
+    document.documentElement.setAttribute("data-nf-input", "touch");
+  }
+</script>
 <style>
-  :root{
-    --bg:#141210; --bg2:#1a1712; --panel:#1e1a15; --panel2:#241f19;
-    --ink:#efe6d6; --ink-dim:#a99a83; --line:#2c261e; --edge:#3a3227;
-    --brass:#e0a13c; --brass-dim:#b9853165;
-    --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
-    --mono:"Cascadia Code",ui-monospace,"Consolas",monospace;
-    --thai:"Leelawadee UI","Noto Sans Thai",Thonburi,sans-serif;
-  }
-  *{box-sizing:border-box}
-  html{overflow-x:hidden}
-  body{
-    margin:0; background:
-      radial-gradient(1100px 520px at 82% -8%, #24201a 0%, transparent 60%),
-      radial-gradient(900px 480px at -6% 4%, #201c16 0%, transparent 55%),
-      var(--bg);
-    color:var(--ink); font-family:var(--sans); line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
+  /* This page's own layout, on the theme's tokens. Nothing here redraws an NF
+     control: the frames, headings, faces and scrollbar all come from the kit. */
   .wrap{width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(18px,4vw,40px)}
   a{color:inherit}
   /* Thai anywhere on the page gets a real Thai font, never the mono */
-  [lang="th"]{font-family:var(--thai)}
+  [lang="th"]{font-family:"Leelawadee UI","Noto Sans Thai",Thonburi,sans-serif}
 
-  /* top rule */
-  .topline{border-bottom:1px solid var(--line); background:rgba(20,18,16,.6)}
-  .topline .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px clamp(18px,4vw,40px)}
-  .brandmark{font-family:var(--mono); font-size:13px; letter-spacing:.04em; color:var(--ink)}
-  .brandmark b{color:var(--brass); font-weight:600}
-  .topnote{font-family:var(--mono); font-size:11.5px; color:var(--ink-dim); letter-spacing:.03em}
+  /* top rule -- an engraved groove, cut with the theme's own etch tokens */
+  .topline{border-bottom:1px solid var(--nf-etch-lo); box-shadow:0 1px 0 var(--nf-etch-hi)}
+  .topline .wrap{display:flex; align-items:center; gap:10px 14px; flex-wrap:wrap;
+    padding:10px clamp(18px,4vw,40px)}
+  .brandmark{font:normal 13px var(--nf-font-mono); letter-spacing:.04em}
+  .brandmark b{color:var(--nf-title); font-weight:600}
+  .topnote{font:normal 11.5px var(--nf-font-mono); color:var(--nf-text-dim); letter-spacing:.03em}
+  /* The one control on the page, and it does a real job. margin-left:auto pins it
+     right on a wide window; once the bar wraps it simply rides the second line.
+     The two positions are spelled out because .nf-selector's auto-fit grid
+     collapses to one column per row inside a max-content box. */
+  .skin{margin-left:auto; width:max-content; margin-bottom:0;
+    grid-template-columns:repeat(2,minmax(84px,1fr))}
 
-  /* hero */
-  header.hero{padding:clamp(44px,8vw,92px) 0 clamp(26px,4vw,44px)}
-  .kicker{font-family:var(--mono); font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--brass); margin:0 0 18px}
-  h1{font-size:clamp(30px,5.6vw,58px); line-height:1.04; letter-spacing:-.02em; margin:0; font-weight:700; max-width:20ch}
-  h1 .amp{color:var(--brass)}
-  .bio{max-width:62ch; margin:26px 0 0}
-  .bio p{color:var(--ink-dim); font-size:clamp(14.5px,1.6vw,16.5px); margin:0 0 14px}
+  /* hero -- sits on bare metal, the way an NF window's own top does */
+  header.hero{padding:clamp(34px,6vw,68px) 0 clamp(20px,3vw,32px)}
+  h1{font:bold clamp(27px,4.6vw,46px)/1.1 var(--nf-font); letter-spacing:-.015em;
+     margin:0; max-width:22ch}
+  h1 .amp{color:var(--nf-title)}
+  .bio{max-width:64ch; margin:22px 0 0}
+  .bio p{color:var(--nf-text-dim); font-size:14px; margin:0 0 12px}
   .bio p:last-child{margin-bottom:0}
-  .bio b{color:var(--ink); font-weight:600}
-  .handles{font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin:22px 0 0;
+  .bio b{color:var(--nf-text); font-weight:600}
+  .handles{font:normal 12.5px var(--nf-font-mono); color:var(--nf-text-dim); margin:20px 0 0;
     display:flex; flex-wrap:wrap; gap:8px 20px; align-items:baseline}
-  .handles a{color:var(--brass); text-decoration:none; border-bottom:1px solid var(--brass-dim)}
-  .handles a:hover{border-bottom-color:var(--brass)}
+  .handles b{color:var(--nf-text); font-weight:600}
+  .handles a{color:var(--nf-title); text-decoration:none;
+    border-bottom:1px solid color-mix(in srgb, var(--nf-title) 45%, transparent)}
+  .handles a:hover{border-bottom-color:var(--nf-title)}
 
-  /* section headings */
-  .sec{margin:clamp(30px,5vw,54px) 0 0; border-top:1px solid var(--line); padding-top:clamp(24px,3.5vw,38px)}
-  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 18px}
-  .sec-head h2{font-size:clamp(19px,2.4vw,25px); margin:0; letter-spacing:-.01em}
-  .sec-head .note{font-family:var(--mono); font-size:12px; color:var(--ink-dim); letter-spacing:.03em}
+  /* A section is an .nf-frame -- a sunken well with its heading inside it. The
+     kit's 10px/13px padding is drawn for control rows; prose needs more room, so
+     the padding is the only thing this page overrides on a frame. */
+  .sec{padding:clamp(16px,2.2vw,22px) clamp(16px,2.2vw,24px) clamp(18px,2.4vw,24px);
+       margin-bottom:clamp(16px,2.4vw,26px)}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between;
+    gap:6px 14px; flex-wrap:wrap; margin:0 0 14px}
+  /* .nf-title is 13px, which is right for a control group and small for a page
+     section. Same colour, same emboss, one step up in size. */
+  .sec-head h2.nf-title{font-size:clamp(16px,1.9vw,19px); margin:0}
+  .sec-head .note{font:normal 12px var(--nf-font-mono); color:var(--nf-text-dim); letter-spacing:.03em}
 
-  /* entry grid -- one <a class="tool"> per published thing */
-  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px}
+  /* entry grid -- one <a class="tool nf-btn"> per published thing. .nf-cols is
+     the kit's own auto-fit column grid, so the reflow is the theme's; the cards
+     stretch so a row of raised faces shares one bottom edge. */
+  .sec .nf-cols{align-items:stretch}
   .tool{
-    position:relative; display:flex; flex-direction:column; gap:14px; text-decoration:none;
-    background:linear-gradient(180deg,var(--panel2),var(--panel));
-    border:1px solid var(--line); border-radius:16px; padding:22px 22px 20px; overflow:hidden;
-    transition:border-color .18s ease, transform .18s ease;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start;
+    gap:12px; text-align:left; text-decoration:none;
+    min-height:0; padding:15px 17px 14px;
   }
-  .tool::before{content:""; position:absolute; left:0; top:0; height:100%; width:4px; background:var(--ac); opacity:.85}
-  .tool::after{content:""; position:absolute; inset:0; background:radial-gradient(420px 160px at 100% 0%, color-mix(in srgb,var(--ac) 16%, transparent) 0%, transparent 60%); opacity:0; transition:opacity .18s ease; pointer-events:none}
-  .tool:hover{border-color:var(--edge); transform:translateY(-2px)}
-  .tool:hover::after{opacity:1}
-  .tool-top{display:flex; align-items:center; gap:16px}
-  .tool-ico{width:58px; height:58px; border-radius:13px; flex:0 0 auto; background:#0d0b09;
-    border:1px solid var(--line); object-fit:contain; box-shadow:0 8px 22px -12px #000}
-  /* glyph tile for an entry with no app icon */
-  .tool-glyph{width:58px; height:58px; border-radius:13px; flex:0 0 auto; background:#0d0b09;
-    border:1px solid var(--line); box-shadow:0 8px 22px -12px #000;
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:26px; font-weight:700; color:var(--ac)}
+  /* the tool's own colour, carried as a painted edge rather than a lamp: a lamp
+     would read as a status light, and there is no status here */
+  .tool::before{content:""; position:absolute; left:0; top:0; height:100%; width:3px;
+    background:var(--ac); opacity:.8}
+  .tool-top{display:flex; align-items:center; gap:14px}
+  /* the icon stands in a recess, cut with the theme's display tokens */
+  .tool-ico, .tool-glyph{
+    width:56px; height:56px; flex:0 0 auto; border-radius:3px;
+    background:var(--nf-display-bg);
+    box-shadow:
+      inset calc(2 * var(--nf-lit-x)) calc(2 * var(--nf-lit-y)) 5px rgba(0,0,0,.7),
+      0 0 0 1px var(--nf-display-rim),
+      var(--nf-lit-x) var(--nf-lit-y) 0 1px var(--nf-frame-rim-hi);
+  }
+  .tool-ico{object-fit:contain}
+  .tool-glyph{display:flex; align-items:center; justify-content:center;
+    font:bold 26px var(--nf-font-mono); color:var(--ac); text-shadow:none}
   .tool-id{min-width:0}
-  .tool-name{font-family:var(--mono); font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em;
+  .tool-name{font:bold 16px/1.2 var(--nf-font); letter-spacing:-.01em;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  .tool-tag{color:var(--ac); font-size:13.5px; margin-top:3px; font-style:italic}
-  .tool-one{margin:0; color:var(--ink-dim); font-size:14px}
-  .tool-go{font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink); margin-top:auto}
-  .tool-go .arr{color:var(--ac); transition:transform .18s ease; display:inline-block}
-  .tool:hover .tool-go .arr{transform:translateX(4px)}
+  .tool-tag{color:var(--ac); font-size:13px; font-style:italic; margin-top:2px}
+  .tool-one{margin:0; color:var(--nf-text-dim); font-size:13px; line-height:1.45}
+  .tool-go{font:normal 12.5px var(--nf-font-mono); letter-spacing:.03em; margin-top:auto}
+  .tool-go .arr{color:var(--ac)}
 
   /* ethos */
-  .ethos-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(22px,5vw,52px); align-items:start}
-  .ethos-grid h3{font-size:clamp(17px,2.1vw,21px); margin:0 0 14px; letter-spacing:-.01em; font-weight:700}
-  .ethos-grid p{color:var(--ink-dim); margin:0 0 14px; font-size:15px}
-  .ethos-grid p b{color:var(--ink)}
-  .pledge{list-style:none; margin:0; padding:0; display:grid; gap:12px}
-  .pledge li{font-family:var(--mono); font-size:13.5px; color:var(--ink); display:flex; gap:11px; align-items:flex-start}
-  .pledge .mk{color:var(--brass); flex:0 0 auto}
-  .pledge small{display:block; color:var(--ink-dim); font-family:var(--sans); font-size:13px; margin-top:2px}
+  .ethos{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(20px,4vw,44px); align-items:start}
+  .ethos h3.nf-title{font-size:clamp(15px,1.7vw,17px); margin:0 0 12px; line-height:1.3}
+  .ethos p{color:var(--nf-text-dim); margin:0 0 12px; font-size:13.5px}
+  .ethos p:last-child{margin-bottom:0}
+  .ethos p b{color:var(--nf-text)}
+  .pledge{list-style:none; margin:0; padding:0; display:grid; gap:11px}
+  .pledge li{font-size:13px; display:flex; gap:10px; align-items:flex-start}
+  .pledge .mk{color:var(--nf-title); flex:0 0 auto}
+  .pledge small{display:block; color:var(--nf-text-dim); font-size:12.5px; margin-top:2px}
 
-  footer{padding:clamp(26px,4vw,48px) 0 44px; margin-top:clamp(28px,4vw,46px); border-top:1px solid var(--line)}
-  footer .wrap{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
-    font-family:var(--mono); font-size:12px; color:var(--ink-dim); letter-spacing:.02em}
+  footer{padding:clamp(20px,3vw,32px) 0 40px; margin-top:clamp(8px,1.5vw,16px);
+    border-top:1px solid var(--nf-etch-lo); box-shadow:inset 0 1px 0 var(--nf-etch-hi)}
+  footer .wrap{display:flex; justify-content:space-between; gap:6px 14px; flex-wrap:wrap;
+    font:normal 12px var(--nf-font-mono); color:var(--nf-text-dim); letter-spacing:.02em}
 
   @media (max-width:720px){
-    .ethos-grid{grid-template-columns:1fr}
+    .ethos{grid-template-columns:1fr}
     .topnote{display:none}
   }
   /* short-and-wide (a strip window): claw back the vertical the hero eats.
      The headline shrinks first, then the topline sheds -- the bio stays. */
   @media (max-height:560px){
-    header.hero{padding:26px 0 20px}
-    h1{font-size:clamp(24px,3.2vw,36px); max-width:34ch}
-    .kicker{margin-bottom:10px}
-    .bio{margin-top:16px}
-    .handles{margin-top:14px}
-    .sec{margin-top:26px; padding-top:22px}
+    header.hero{padding:22px 0 16px}
+    h1{font-size:clamp(23px,3.2vw,32px); max-width:34ch}
+    .bio{margin-top:14px}
+    .handles{margin-top:12px}
+    .sec{margin-bottom:14px}
   }
+  /* Shorter still: the bar sheds its name and its tagline but STAYS, because the
+     theme switch is the only control on the page and dropping it is a rung too
+     far down the ladder. */
   @media (max-height:430px){
-    .topline{display:none}
-    h1{font-size:clamp(21px,2.6vw,28px)}
-    header.hero{padding:20px 0 14px}
-    footer{padding-bottom:24px}
+    .topline .brandmark, .topline .topnote{display:none}
+    .topline .wrap{padding:5px clamp(18px,4vw,40px)}
+    h1{font-size:clamp(20px,2.6vw,26px)}
+    header.hero{padding:16px 0 12px}
+    footer{padding-bottom:22px}
   }
 </style>
 </head>
@@ -127,10 +156,13 @@
   <div class="topline"><div class="wrap">
     <span class="brandmark"><b>//</b> leif claesson</span>
     <span class="topnote">audio dsp &middot; small sharp tools</span>
+    <div class="nf-selector skin" id="skin" role="radiogroup" aria-label="Theme">
+      <button class="nf-btn" type="button" role="radio" aria-checked="true" data-mode="dark">Dark</button>
+      <button class="nf-btn" type="button" role="radio" aria-checked="false" data-mode="light">Light</button>
+    </div>
   </div></div>
 
   <header class="hero"><div class="wrap">
-    <p class="kicker">Leif Claesson</p>
     <h1>I write audio DSP. Everything on this page is a <span class="amp">side effect</span>.</h1>
 
     <div class="bio">
@@ -157,21 +189,23 @@
 
   <main class="wrap">
 
-    <section class="sec">
+    <section class="nf-frame sec">
       <div class="sec-head">
-        <h2>The tools</h2>
+        <h2 class="nf-title">The tools</h2>
         <span class="note">free to use &middot; closed source &middot; no warranty</span>
       </div>
-      <div class="grid">
+      <div class="nf-cols">
 
 <!-- =====================================================================
-     TO ADD AN ENTRY: copy one <a class="tool"> block below, change the
+     TO ADD AN ENTRY: copy one <a class="tool nf-btn"> block below, change the
      href, --ac accent colour, icon, name, tagline and one-liner. The grid
      reflows on its own -- no other file needs touching. An entry with no
      app icon uses <div class="tool-glyph">X</div> in place of the <img>.
+     nf-btn is what makes the card a raised NF face; tool is this page's own
+     layout on top of it.
      ===================================================================== -->
 
-        <a class="tool" href="https://leifclaesson.github.io/glance/" style="--ac:#38b0c6">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/glance/" style="--ac:#38b0c6">
           <div class="tool-top">
             <img class="tool-ico" src="assets/glance.png" alt="Glance icon" decoding="async">
             <div class="tool-id">
@@ -183,7 +217,7 @@
           <span class="tool-go">Open <span class="arr">&rarr;</span></span>
         </a>
 
-        <a class="tool" href="https://leifclaesson.github.io/clipboroscope/" style="--ac:#2dffa0">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/clipboroscope/" style="--ac:#2dffa0">
           <div class="tool-top">
             <img class="tool-ico" src="assets/clipboroscope.png" alt="CLIPBOROSCOPE.EXE icon" decoding="async">
             <div class="tool-id">
@@ -195,7 +229,7 @@
           <span class="tool-go">Open <span class="arr">&rarr;</span></span>
         </a>
 
-        <a class="tool" href="https://leifclaesson.github.io/enhance/" style="--ac:#46c8ff">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/enhance/" style="--ac:#46c8ff">
           <div class="tool-top">
             <img class="tool-ico" src="assets/enhance.png" alt="ENHANCE!! icon" decoding="async">
             <div class="tool-id">
@@ -207,7 +241,7 @@
           <span class="tool-go">Open <span class="arr">&rarr;</span></span>
         </a>
 
-        <a class="tool" href="https://leifclaesson.github.io/pegged/" style="--ac:#3f7bff">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/pegged/" style="--ac:#3f7bff">
           <div class="tool-top">
             <img class="tool-ico" src="assets/pegged.png" alt="Pegged icon" decoding="async">
             <div class="tool-id">
@@ -219,7 +253,7 @@
           <span class="tool-go">Open <span class="arr">&rarr;</span></span>
         </a>
 
-        <a class="tool" href="https://leifclaesson.github.io/vitrine/" style="--ac:#7f9ac9">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/vitrine/" style="--ac:#7f9ac9">
           <div class="tool-top">
             <img class="tool-ico" src="assets/vitrine.png" alt="Vitrine icon" decoding="async">
             <div class="tool-id">
@@ -234,14 +268,14 @@
       </div>
     </section>
 
-    <section class="sec">
+    <section class="nf-frame sec">
       <div class="sec-head">
-        <h2>Other things</h2>
+        <h2 class="nf-title">Other things</h2>
         <span class="note">odds, ends and excavations</span>
       </div>
-      <div class="grid">
+      <div class="nf-cols">
 
-        <a class="tool" href="https://leifclaesson.github.io/proverb-masher/" style="--ac:#ffb000">
+        <a class="tool nf-btn" href="https://leifclaesson.github.io/proverb-masher/" style="--ac:#ffb000">
           <div class="tool-top">
             <div class="tool-glyph" aria-hidden="true">|</div>
             <div class="tool-id">
@@ -256,10 +290,10 @@
       </div>
     </section>
 
-    <section class="sec">
-      <div class="ethos-grid">
+    <section class="nf-frame sec">
+      <div class="ethos">
         <div>
-          <h3>Free to use. Closed source. Made because they needed to exist.</h3>
+          <h3 class="nf-title">Free to use. Closed source. Made because they needed to exist.</h3>
           <p>The tools are not products. They are the sharp little things that made a
             working day smoother, polished until they were worth handing out. So they
             are yours to use, at no cost, with no strings.</p>
@@ -282,6 +316,39 @@
     <span>&copy; 2026 Leif Claesson</span>
     <span>audio dsp since 1996 &middot; small sharp tools</span>
   </div></footer>
+
+<script type="module">
+  /* The kit, staged into nf/. brushed-metal paints the panel texture and follows
+     data-nf-mode by itself; nf-press gives every face the Win32 press, the cards
+     included; nf-radio moves the theme selection on the way down. */
+  import { installBackground } from "./nf/brushed-metal.js";
+  import { installPressFeedback } from "./nf/nf-press.js";
+  import { installRadioGroups } from "./nf/nf-radio.js";
+
+  installBackground();
+  installPressFeedback();
+
+  const root = document.documentElement;
+  const skin = document.getElementById("skin");
+
+  /* The markup ships Dark selected; the boot script may have chosen Light before
+     this module ran, so the strip is pointed at the live mode first. */
+  const paint = (mode) => {
+    for (const b of skin.querySelectorAll(".nf-btn")) {
+      const on = b.dataset.mode === mode;
+      b.classList.toggle("is-selected", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    }
+  };
+  paint(root.getAttribute("data-nf-mode") || "dark");
+
+  installRadioGroups({
+    onSelect: (chosen) => {
+      root.setAttribute("data-nf-mode", chosen.dataset.mode);
+      try { localStorage.setItem("nf-mode", chosen.dataset.mode); } catch (e) { /* private mode */ }
+    },
+  });
+</script>
 
 </body>
 </html>
