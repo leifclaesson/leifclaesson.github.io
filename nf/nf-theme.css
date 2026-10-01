@@ -4,10 +4,10 @@
  * theme/tools/bake-web-subset.py, for the page it sits beside. The kit in the
  * monorepo is the source of truth: change it there and re-bake.
  *
- * Kept 54 of 213 rules and 97 of 201 custom properties; every trimpot seed is
+ * Kept 41 of 213 rules and 84 of 201 custom properties; every trimpot seed is
  * resolved to its default, since there is no hub out here to override one.
  *
- * Staged beside it: brushed-metal.js, nf-press.js, nf-radio.js, nf-scroll-bevel.js
+ * Staged beside it: brushed-metal.js, nf-press.js, nf-scroll-bevel.js
  */
 :root, :root[data-nf-mode="dark"] {
   color-scheme: dark;
@@ -24,15 +24,10 @@
   --nf-btn-text: hsl(224.0 100.0% 97.1% / 100%);
   --nf-btn-shadow: var(--nf-lit-x) var(--nf-lit-y) 2px rgba(0,0,0,.55);
   --nf-btn-face-a: 100%;
-  --nf-sel-face-a: 100%;
   --nf-btn-wash-top: color-mix(in srgb, var(--nf-btn-top) var(--nf-btn-face-a, 100%), transparent);
   --nf-btn-wash-bottom: color-mix(in srgb, var(--nf-btn-bottom) var(--nf-btn-face-a, 100%), transparent);
-  --nf-sel-wash-top: color-mix(in srgb, var(--nf-sel-top) var(--nf-sel-face-a, 100%), transparent);
-  --nf-sel-wash-bottom: color-mix(in srgb, var(--nf-sel-bottom) var(--nf-sel-face-a, 100%), transparent);
   --nf-btn-wash-push-top: color-mix(in srgb, color-mix(in srgb, var(--nf-btn-top) var(--nf-push-dim), #000) var(--nf-btn-face-a, 100%), transparent);
   --nf-btn-wash-push-bottom: color-mix(in srgb, color-mix(in srgb, var(--nf-btn-bottom) var(--nf-push-dim), #000) var(--nf-btn-face-a, 100%), transparent);
-  --nf-sel-wash-push-top: color-mix(in srgb, color-mix(in srgb, var(--nf-sel-top) var(--nf-push-dim), #000) var(--nf-sel-face-a, 100%), transparent);
-  --nf-sel-wash-push-bottom: color-mix(in srgb, color-mix(in srgb, var(--nf-sel-bottom) var(--nf-push-dim), #000) var(--nf-sel-face-a, 100%), transparent);
   --nf-btn-edge-hi: var(--nf-btn-rim-hi);
   --nf-btn-edge-lo: var(--nf-btn-rim-lo);
   --nf-lit-x: 0.707107px;
@@ -41,13 +36,7 @@
   --nf-lit-ny: 1;
   --nf-lit-bx: calc(1px * var(--nf-lit-nx));
   --nf-lit-by: calc(1px * var(--nf-lit-ny));
-  --nf-sel-top: hsl(215.8 48.5% 56.4%);
-  --nf-sel-bottom: hsl(215.8 48.5% calc(56.4% - 22.4%));
-  --nf-sel-rim-hi: hsl(215.8 48.5% calc(56.4% + 21.9%));
-  --nf-sel-text: hsl(0.0 0.0% 100.0% / 100%);
   --nf-focus: hsl(215.8 48.5% 56.4% / 100%);
-  --nf-sel-shadow-d: 1px;
-  --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 85%);
   --nf-inner-bg: hsl(215.4 18.7% 13.1% / 70%);
   --nf-text: hsl(224 100% 97.1% / 100%);
   --nf-text-dim: hsl(218.2 15.7% 72.5% / 100%);
@@ -82,17 +71,9 @@
   --nf-btn-shadow: var(--nf-lit-x) var(--nf-lit-y) 2px rgba(0,0,0,.3);
   --nf-btn-text-dy: -0.878px;
   --nf-btn-face-a: 80%;
-  --nf-sel-face-a: 100%;
   --nf-btn-ink: color-mix(in srgb, color-mix(in srgb, #ffffff calc(0 * 100%), #1b1e22) 100%, transparent);
   --nf-btn-ink-shadow: var(--nf-text-shadow-d) var(--nf-text-shadow-d) 0 color-mix(in srgb, rgba(0,0,0,.55) calc(0 * 100%), rgba(255,255,255,.65));
-  --nf-sel-ink: color-mix(in srgb, color-mix(in srgb, #ffffff calc(1 * 100%), #1b1e22) 100%, transparent);
-  --nf-sel-top: hsl(131.1 96% 32.6%);
-  --nf-sel-bottom: hsl(131.1 96% calc(32.6% - -0.4%));
-  --nf-sel-rim-hi: hsl(131.1 96% calc(32.6% + 18.9%));
-  --nf-sel-text: hsl(0.0 0.0% 100.0% / 100%);
   --nf-focus: hsl(35.9 52.5% 83.5% / 100%);
-  --nf-sel-shadow-d: 1px;
-  --nf-sel-shadow: var(--nf-sel-shadow-d) var(--nf-sel-shadow-d) 0 hsl(0 0% 0% / 100%);
   --nf-inner-bg: hsl(35 100% 91% / 17.3%);
   --nf-text: hsl(214.3 11.5% 12% / 100%);
   --nf-text-dim: hsl(218.2 7.9% 0% / 60%);
@@ -138,12 +119,8 @@ em, i, cite, dfn, var, address {
   font-family: var(--nf-font-italic);
   font-synthesis: style;
 }
-:root {
-  --nf-tap-h: 0px;
-}
 :root[data-nf-input="touch"] {
   --nf-ctl-h: 44px;
-  --nf-tap-h: var(--nf-ctl-h);
   --nf-scrollbar-w: 45px;
 }
 @media (max-width: 700px) {
@@ -260,9 +237,6 @@ body {
 .nf-frame > .nf-title:first-child {
   margin-top: 0;
 }
-.nf-selector {
-  margin-bottom: var(--nf-recess-gap);
-}
 :is(.nf-grid, .nf-row, .nf-appmenu, .nf-menu-row) > :is(.nf-display, .nf-meter, .nf-list, .nf-row, .nf-selector, .nf-frame), :is(.nf-frame, .nf-appmenu) > :last-child {
   margin-bottom: 0;
 }
@@ -307,9 +281,6 @@ body {
 [data-dragging] .nf-btn:hover:not([disabled]) {
   filter: none;
 }
-[data-dragging] .nf-btn.is-hovered:not([disabled]) {
-  filter: brightness(1.1);
-}
 .nf-btn:focus-visible {
   outline: 2px solid var(--nf-focus);
   outline-offset: 2px;
@@ -319,39 +290,9 @@ body {
   box-shadow: inset var(--nf-lit-x) var(--nf-lit-y) 0 var(--nf-btn-edge-lo), inset calc(2 * var(--nf-lit-x)) calc(2 * var(--nf-lit-y)) 3px rgba(0,0,0,.28), 0 0 0 1px var(--nf-btn-edge-lo);
   transform: translate(var(--nf-push-shift), var(--nf-push-shift));
 }
-.nf-selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-  gap: 4px;
-  padding: 5px;
-  border-radius: var(--nf-radius-frame);
-  background: var(--nf-frame-bg);
-  box-shadow: var(--nf-frame-shadow), 0 0 0 1px var(--nf-frame-rim-lo), var(--nf-lit-x) var(--nf-lit-y) 0 1px var(--nf-frame-rim-hi);
-}
-.nf-selector .nf-btn {
-  min-height: max(25px, var(--nf-tap-h));
-  padding: 3px 8px;
-  font-size: 12px;
-}
-.nf-btn[aria-checked="true"], .nf-btn.is-selected, .nf-selector .nf-btn.is-selected {
-  background: linear-gradient(180deg, var(--nf-sel-wash-top), var(--nf-sel-wash-bottom));
-  color: var(--nf-sel-ink, var(--nf-sel-text));
-  text-shadow: var(--nf-sel-shadow);
-  box-shadow: inset var(--nf-lit-x) var(--nf-lit-y) 0 var(--nf-sel-rim-hi), inset calc(-1 * var(--nf-lit-x)) calc(-1 * var(--nf-lit-y)) 0 var(--nf-btn-edge-lo), 0 0 0 1px var(--nf-btn-edge-lo), var(--nf-btn-shadow);
-}
-.nf-btn.is-selected:active:not([disabled]):not(.is-press-away):not([data-dragging] *), .nf-btn.is-selected.is-pressed:not([disabled]), .nf-btn[aria-checked="true"]:active:not([disabled]):not(.is-press-away):not([data-dragging] *), .nf-btn[aria-checked="true"].is-pressed:not([disabled]) {
-  background: linear-gradient(180deg, var(--nf-sel-wash-push-top), var(--nf-sel-wash-push-bottom));
-  color: var(--nf-sel-ink, var(--nf-sel-text));
-  text-shadow: var(--nf-sel-shadow);
-}
 .nf-cols {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 12px;
   align-items: start;
-}
-@media (max-width: 460px) {
-  .nf-selector {
-    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
-  }
 }
